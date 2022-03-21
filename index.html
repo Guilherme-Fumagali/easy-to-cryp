@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+        function criptografa(){
+            var frase = document.getElementById("txtfrase").value;
+            var senha = document.getElementById("txtsenha").value;
+
+            var encrypted = CryptoJS.AES.encrypt(frase, senha);
+            
+            document.getElementById("resCriptografa").innerHTML = "Frase cifrada:";
+            document.getElementById("resCriptografa").innerHTML = encrypted;
+        }
+
+        function descriptografa(){
+            var chave = document.getElementById("txtkey").value;
+            var aes = document.getElementById("txtaes").value;
+
+            var decrypted = CryptoJS.AES.decrypt(aes, chave);
+
+            var fraseDescriptografada =  decrypted.toString(CryptoJS.enc.Utf8);
+
+            if(fraseDescriptografada){
+                document.getElementById("resDescriptografa").innerHTML = "Chave correta:";
+                document.getElementById("resDescriptografa").innerHTML = fraseDescriptografada;
+            }else
+                document.getElementById("resDescriptografa").innerHTML = "Chave incorreta, tente novamente :/";
+        }
+    </script>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+    
+    <div>
+        <div> Frase: <input type="text" name="txtfrase" id="txtfrase"> </div>
+        <div> Chave: <input type="text" name="txtsenha" id="txtsenha"> </div>
+        <button onclick="criptografa()">Criptografar</button>
+        <div id="resCriptografa"></div>
+    </div>
+    <div>
+        <div> Frase cifrada: <input type="text" name="txtaes" id="txtaes"> </div>
+        <div> Chave: <input type="text" name="txtkey" id="txtkey"> </div>
+        <button onclick="descriptografa()">Descriptografar</button>
+        <div id="resDescriptografa"> </div>
+    </div>
+</body>
+</html>
