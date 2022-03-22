@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Segredos da Cacau</title>
     <script> 
         function criptografa(){
             var frase = document.getElementById("txtfrase").value;
             var senha = document.getElementById("txtsenha").value;
-
+            senha = senha.toLowerCase();
+            
             var encrypted = CryptoJS.AES.encrypt(frase, senha);
             
             document.getElementById("resCriptografa").innerHTML = "Frase cifrada:";
@@ -19,6 +20,7 @@
         function descriptografa(){
             var chave = document.getElementById("txtkey").value;
             var aes = document.getElementById("txtaes").value;
+            chave = chave.toLowerCase();
 
             var decrypted = CryptoJS.AES.decrypt(aes, chave);
 
@@ -31,21 +33,48 @@
                 document.getElementById("resDescriptografa").innerHTML = "Chave incorreta, tente novamente :/";
         }
     </script>
+    <style>
+        div#all{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding-top: 30%;    
+            
+        }
+        
+        div#criptografa{
+            text-align: center;
+            background-color: rgb(0, 225, 255);
+        }
+
+        div#descriptografa{
+            text-align: center;
+            background-color: rgb(206, 83, 223);
+        }
+
+        input{
+            border-radius: 0px;
+        }
+    </style>
 </head>
 <body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
     
-    <div>
-        <div> Frase: <input type="text" name="txtfrase" id="txtfrase"> </div>
-        <div> Chave: <input type="text" name="txtsenha" id="txtsenha"> </div>
-        <button onclick="criptografa()">Criptografar</button>
-        <div id="resCriptografa"></div>
-    </div>
-    <div>
-        <div> Frase cifrada: <input type="text" name="txtaes" id="txtaes"> </div>
-        <div> Chave: <input type="text" name="txtkey" id="txtkey"> </div>
-        <button onclick="descriptografa()">Descriptografar</button>
-        <div id="resDescriptografa"> </div>
+    <div id="all">
+        <div id="criptografa">
+            <div><input type="text" name="txtfrase" id="txtfrase" placeholder="Frase"> </div>
+            <div><input type="text" name="txtsenha" id="txtsenha" placeholder="Chave"> </div>
+            <button onclick="criptografa()">Criptografar</button>
+            <div id="resCriptografa"></div>
+        </div>
+        <div/ style="padding: 10px;">
+        <div id="descriptografa">
+            <div><input type="text" name="txtaes" id="txtaes" placeholder="Frase cifrada"> </div>
+            <div><input type="text" name="txtkey" id="txtkey" placeholder="Chave"> </div>
+            <button onclick="descriptografa()">Descriptografar</button>
+            <div id="resDescriptografa"> </div>
+        </div>
     </div>
 </body>
 </html>
