@@ -1,14 +1,14 @@
 function criptografa(){
-    var frase = document.getElementById("txtfrase").value;
+    var mensagem = document.getElementById("txtmensagem").value;
     var senha = document.getElementById("txtsenha").value;
-    if(!frase || !senha)
+    if(!mensagem || !senha)
         return;
 
     senha = senha.toLowerCase();
     
-    var encrypted = CryptoJS.AES.encrypt(frase, senha);
+    var encrypted = CryptoJS.AES.encrypt(mensagem, senha);
     
-    document.getElementById("resCriptografa").innerHTML = "Frase cifrada:";
+    document.getElementById("feeCriptografa").innerHTML = "Mensagem cifrada";
     document.getElementById("resCriptografa").innerHTML = encrypted;
 }
 
@@ -22,11 +22,11 @@ function descriptografa(){
 
     var decrypted = CryptoJS.AES.decrypt(aes, chave);
 
-    var fraseDescriptografada =  decrypted.toString(CryptoJS.enc.Utf8);
+    var mensagemDescriptografada =  decrypted.toString(CryptoJS.enc.Utf8);
 
-    if(fraseDescriptografada){
-        document.getElementById("resDescriptografa").innerHTML = "Chave correta:";
-        document.getElementById("resDescriptografa").innerHTML = fraseDescriptografada;
+    if(mensagemDescriptografada){
+        document.getElementById("feeDescriptografa").innerHTML = "Mensagem decifrada";
+        document.getElementById("resDescriptografa").innerHTML = mensagemDescriptografada;
     }else
-        document.getElementById("resDescriptografa").innerHTML = "Chave incorreta, tente novamente :/";
+        document.getElementById("feeDescriptografa").innerHTML = "Chave incorreta :/";
 }
