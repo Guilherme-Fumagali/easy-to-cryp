@@ -8,6 +8,10 @@ div#all{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    position: absolute;
+    width: 99%;
+    top: 16%; 
+    margin-top: -25px; 
 }
 
 div#criptografa{
